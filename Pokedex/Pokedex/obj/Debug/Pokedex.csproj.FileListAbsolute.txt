@@ -1,0 +1,14 @@
+D:\Repos\Uni\4\Informatik 2\Pokedex\Pokedex\Pokedex\bin\Debug\Pokedex.exe.config
+D:\Repos\Uni\4\Informatik 2\Pokedex\Pokedex\Pokedex\bin\Debug\Pokedex.exe
+D:\Repos\Uni\4\Informatik 2\Pokedex\Pokedex\Pokedex\bin\Debug\Pokedex.pdb
+D:\Repos\Uni\4\Informatik 2\Pokedex\Pokedex\Pokedex\obj\Debug\Pokedex.csproj.SuggestedBindingRedirects.cache
+D:\Repos\Uni\4\Informatik 2\Pokedex\Pokedex\Pokedex\obj\Debug\Pokedex.formPokedex.resources
+D:\Repos\Uni\4\Informatik 2\Pokedex\Pokedex\Pokedex\obj\Debug\Pokedex.Properties.Resources.resources
+D:\Repos\Uni\4\Informatik 2\Pokedex\Pokedex\Pokedex\obj\Debug\Pokedex.csproj.GenerateResource.cache
+D:\Repos\Uni\4\Informatik 2\Pokedex\Pokedex\Pokedex\obj\Debug\Pokedex.csproj.CoreCompileInputs.cache
+D:\Repos\Uni\4\Informatik 2\Pokedex\Pokedex\Pokedex\obj\Debug\Pokedex.exe
+D:\Repos\Uni\4\Informatik 2\Pokedex\Pokedex\Pokedex\obj\Debug\Pokedex.pdb
+D:\Repos\Uni\4\Informatik 2\Pokedex\Pokedex\Pokedex\obj\Debug\Pokedex.csproj.AssemblyReference.cache
+D:\Repos\Uni\4\Informatik 2\Pokedex\Pokedex\Pokedex\bin\Debug\Newtonsoft.Json.dll
+D:\Repos\Uni\4\Informatik 2\Pokedex\Pokedex\Pokedex\bin\Debug\Newtonsoft.Json.xml
+D:\Repos\Uni\4\Informatik 2\Pokedex\Pokedex\Pokedex\obj\Debug\Pokedex.csproj.CopyComplete

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "38f8c3c2-ee5d-4441-9dfb-2fef2fc46f97": {
+      "ProjectGuid": "38f8c3c2-ee5d-4441-9dfb-2fef2fc46f97",
+      "DisplayName": "PokedexWPF",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

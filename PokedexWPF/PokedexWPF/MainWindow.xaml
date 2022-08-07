@@ -1,0 +1,206 @@
+﻿<Window x:Class="PokedexWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PokedexWPF"
+        mc:Ignorable="d"
+        Title="Pokedex" Height="450" Width="800"
+        WindowStyle = "None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True"
+        >
+    <!--#region Main Window-->
+    <Border Background = "White" CornerRadius="20">
+        <Grid HorizontalAlignment="Left" Width="800">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <!--#region Header-->
+
+            <Rectangle 
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                RadiusX="15"
+                RadiusY="15"
+                Fill="#D20000"/>
+
+            <TextBlock 
+                Text="Pokedex" 
+                VerticalAlignment="Top" 
+                HorizontalAlignment="Center"
+                Margin="0,10,0,0"
+                FontSize="45"
+                FontFamily="Fonts/#Press Start 2P"
+                />
+
+            <Button 
+                x:Name="ButtonClose"
+                VerticalAlignment="Top" 
+                HorizontalAlignment="Right"
+                Width="30"
+                Height="30"
+                Background="Transparent"
+                BorderThickness="0"
+                BorderBrush="Transparent"
+                Margin="10"
+                FontFamily="Fonts/#Press Start 2P"
+                FontSize="30"
+                Click="ButtonCloseClickHandler"
+                >
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="#808080"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                X
+            </Button>
+
+            <Rectangle 
+                StrokeThickness="5"
+                Width="700"
+                VerticalAlignment="Bottom" 
+                HorizontalAlignment="Center"
+                RadiusX="15"
+                RadiusY="15"
+                Margin="0,0,0,5"
+                Stroke="Black"/>
+
+            <!--#endregion-->
+
+            <!--#region Data Wrapper-->
+            <Border Grid.Row="1" Margin="20">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="300"/>
+                    </Grid.ColumnDefinitions>
+                    <!--#region Grid Data and Management-->
+                    <StackPanel Grid.Column="1">
+                        <ComboBox 
+                            x:Name="ComboBoxPokedexes" 
+                            Height="25" 
+                            FontFamily="Fonts/#Press Start 2P" 
+                            HorizontalAlignment="Stretch"
+                            SelectionChanged="SelectionChangedHandler"
+                            />
+
+                        <Grid Height="25">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBox 
+                                x:Name="TextBoxSearch" 
+                                Padding="7,7,0,0" 
+                                FontFamily="Fonts/#Press Start 2P" 
+                                HorizontalAlignment="Stretch" 
+                                TextWrapping="NoWrap" FontSize="9" 
+                                Background="Transparent"
+                                KeyDown="OnKeyDownHandler"/>
+
+                            <TextBlock Text=" Search" Foreground="#808080" Padding="7,7,0,0" IsHitTestVisible="False" FontFamily="Fonts/#Press Start 2P" HorizontalAlignment="Stretch" TextWrapping="Wrap" FontSize="9">
+
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName = TextBoxSearch}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                            <Button 
+                                x:Name="ButtonSearch"
+                                Grid.Column="1" 
+                                HorizontalAlignment="Stretch" 
+                                FontFamily="Fonts/#Press Start 2P"
+                                Click="ButtonSearchClickHandler">
+                                >
+                            </Button>
+                        </Grid>
+
+                        <DataGrid x:Name="DataGridPokemon"
+                                  SelectionMode="Single"
+                                  HorizontalAlignment="Stretch" 
+                                  Height="285" IsReadOnly="True"
+                                  SelectedCellsChanged="DataGridPokemonSelectionChangedHandler"
+                                  >
+                            <DataGrid.Resources>
+                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="Background" Value="#D20000"/>
+                                    <Setter Property="FontFamily" Value="Fonts/#Press Start 2P"/>
+                                    <Setter Property="FontSize" Value="15"/>
+                                    <Setter Property="Height" Value="25"/>
+                                    <Setter Property="BorderBrush" Value="Black"/>
+                                    <Setter Property="BorderThickness" Value="0,2,2,2"/>
+                                </Style>
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding EntryID}"  Header=" Entry ID" Width="145" FontSize="8"  FontFamily="Fonts/#Press Start 2P"/>
+                                <DataGridTextColumn Binding="{Binding Name}" Header=" Name" Width="*" FontSize="9" FontFamily="Fonts/#Press Start 2P"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                    <!--#endregion-->
+                    <!--#region Data Details-->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="275"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="80"/>
+                        </Grid.RowDefinitions>
+
+                        <Image x:Name="ImageSprite" Stretch="None" Grid.Column="1" Width="100"></Image>
+                        <TextBox x:Name="TextBoxName" IsReadOnly="True" Padding="5" TextBlock.LineHeight="15" TextWrapping="Wrap" FontSize="11" Margin="10,0,10,0" Grid.Row="1" Grid.Column="1" 
+                            FontFamily="Fonts/#Press Start 2P"></TextBox>
+                        <TextBox x:Name="TextBoxEntryID" IsReadOnly="True" Padding="5" TextBlock.LineHeight="15" TextWrapping="Wrap" FontSize="11" Margin="10,0,10,0" Grid.Row="2" Grid.Column="1" 
+                            FontFamily="Fonts/#Press Start 2P"></TextBox>
+                        <TextBox x:Name="TextBoxTypes" IsReadOnly="True" Padding="5" TextBlock.LineHeight="15" TextWrapping="Wrap" FontSize="11" Margin="10,0,10,0" Grid.Row="3" Grid.Column="1" 
+                            FontFamily="Fonts/#Press Start 2P"></TextBox>
+                        <TextBox x:Name="TextBoxHabitat" IsReadOnly="True" Padding="5" TextBlock.LineHeight="15" TextWrapping="Wrap" FontSize="11" Margin="10,0,10,0" Grid.Row="4" Grid.Column="1" 
+                            FontFamily="Fonts/#Press Start 2P"></TextBox>
+                        <TextBox x:Name="TextBoxDescription" IsReadOnly="True" Padding="5" TextBlock.LineHeight="15" TextWrapping="Wrap" FontSize="11" Margin="10,0,10,0" Grid.Row="5" Grid.Column="1" 
+                            ScrollViewer.VerticalScrollBarVisibility="Auto"
+                            FontFamily="Fonts/#Press Start 2P"></TextBox>
+
+                        <Label Grid.Row="1" VerticalAlignment="Top" FontSize="15" FontFamily="Fonts/#Press Start 2P">Name:</Label>
+                        <Label Grid.Row="2" VerticalAlignment="Top" FontSize="15" FontFamily="Fonts/#Press Start 2P">Entry ID:</Label>
+                        <Label Grid.Row="3" VerticalAlignment="Top" FontSize="15" FontFamily="Fonts/#Press Start 2P">Types:</Label>
+                        <Label Grid.Row="4" VerticalAlignment="Top" FontSize="15" FontFamily="Fonts/#Press Start 2P">Habitat:</Label>
+                        <Label Grid.Row="5" VerticalAlignment="Top" FontSize="15" FontFamily="Fonts/#Press Start 2P">Description:</Label>
+                    </Grid>
+                    <!--#endregion-->
+                </Grid>
+            </Border>
+            <!--#endregion-->
+        </Grid>
+    </Border>
+    <!--#endregion-->
+</Window>
